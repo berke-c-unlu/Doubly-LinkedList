@@ -134,25 +134,25 @@ template <class T>
 void DoublyLinkedList<T>::remove(const T& val) {
 	if (!head) return;
 
-	if (size == 1 && head->val == val) {
+	if (size == 1 && head->val == val) { // if there is one element and its the correct one
 		delete head;
 		head = nullptr;
 		tail = nullptr;
 		size--;
 	}
-	else if (head->val == val) {
+	else if (head->val == val) { // if head is the given value
 		Node<T>* tmp = head;
 		head->next->prev = nullptr;
 		head = head->next;
 		delete tmp;
 	}
-	else if (tail->val == val) {
+	else if (tail->val == val) { // if tail is the given value
 		Node<T>* tmp = tail;
 		tail->prev->next = nullptr;
 		tail = tail->prev;
 		delete tmp;
 	}
-	else {
+	else { // find the value if it exists and remove
 		Node<T>* ptr = head;
 		while (ptr) {
 			if (ptr->val == val) {
